@@ -1,0 +1,34 @@
+
+doctype html
+html
+  head
+    title= title
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      h1 GTM Campaigns
+
+      a.add-button(href="/update-cobj") Add to this table
+
+      if errorMessage
+        .error-message= errorMessage
+
+      if records && records.length
+        table
+          thead
+            tr
+              th Name
+              th Campaign Type
+              th Target Audience
+          tbody
+            each record in records
+              tr
+                td= record.properties.name || ''
+                td= record.properties.campaign_type || ''
+                td= record.properties.target_audience || ''
+      else if !errorMessage
+        p No GTM Campaign records found. Add your first campaign!
+
+      a.home-link(href="/") Refresh records

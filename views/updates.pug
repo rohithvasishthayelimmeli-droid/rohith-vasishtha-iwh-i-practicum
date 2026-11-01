@@ -1,0 +1,49 @@
+
+doctype html
+html(lang="en")
+  head
+    title= title
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      h1 Add a New GTM Campaign
+
+      if errorMessage
+        .error-message(role="alert")= errorMessage
+
+      form(action="/update-cobj", method="POST")
+        .form-group
+          label(for="name") Campaign Name
+          input#name(
+            type="text"
+            name="name"
+            placeholder="Enter campaign name"
+            value=formData.name || ''
+            required
+          )
+
+        .form-group
+          label(for="campaign_type") Campaign Type
+          input#campaign_type(
+            type="text"
+            name="campaign_type"
+            placeholder="Enter campaign type"
+            value=formData.campaign_type || ''
+            required
+          )
+
+        .form-group
+          label(for="target_audience") Target Audience
+          input#target_audience(
+            type="text"
+            name="target_audience"
+            placeholder="Enter target audience"
+            value=formData.target_audience || ''
+            required
+          )
+
+        button(type="submit") Create Campaign
+
+      a.home-link(href="/") Return to the homepage
